@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class BankBranch extends Model
+class FirstAccont extends Model
 {
     use HasFactory, SoftDeletes;
+
     protected $dates = ['deleted_at'];
+    protected $fillable = [
+        'name', 'type', 'IsActive',
+
+    ];
+    protected $guarded = array('name', 'type', 'IsActive',);
 
 
-
-    public function owner()
-    {
-        return $this->belongsTo(Bank::class, 'owner_id');
-    }
 }

@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('bank_branches', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('bank_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

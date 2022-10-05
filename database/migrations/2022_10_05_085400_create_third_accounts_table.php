@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create('third_accounts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('second_account_id')->constrained()->cascadeOnDelete();
+            $table->string('type');
+            $table->boolean('IsActive')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('third_accounts');
     }
 };
