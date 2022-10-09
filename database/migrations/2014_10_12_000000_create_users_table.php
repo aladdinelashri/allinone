@@ -22,8 +22,20 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('phone')->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('github_id')->nullable();
+            $table->string('contact_name')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('jop_name')->nullable();
+            $table->string('website')->nullable();
+            $table->foreignId('currency_id')->nullable()->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->onDelete('cascade');
+            $table->foreignId('jop_id')->nullable()->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

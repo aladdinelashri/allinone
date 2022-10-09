@@ -21,14 +21,9 @@ return new class extends Migration
             $table->string('contact_name')->nullable();
             $table->string('company_name')->nullable();
             $table->string('website')->nullable();
-
-            $table->integer('currency_id')->unsigned()->nullable();
-            $table->foreign('currency_id')->references('id')->on('currencies');
-
-            $table->integer('company_id')->unsigned()->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->unsignedInteger('creator_id')->nullable();
-            $table->foreign('creator_id')->references('id')->on('users');
+            $table->foreignId('user_id')->nullable()->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->onDelete('cascade');
+            $table->string('company_name');
             $table->timestamps();
         });
     }
