@@ -13,9 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jops', function (Blueprint $table) {
+        Schema::create('accountbanktypes', function (Blueprint $table) {
             $table->id();
-            $table->string('jop_name');
+            $table->string('name');
+            $table->string('account_number');
+            $table->foreignId('currency_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('bank_branche_id')->constrained()->cascadeOnDelete();
+            $table->decimmal('interest_rate', 5, 2);
+            $table->date('start_date');
+            $table->date('end_date');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jops');
+        Schema::dropIfExists('accountbanktypes');
     }
 };
