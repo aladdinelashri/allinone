@@ -15,13 +15,7 @@ return new class extends Migration
     {
         Schema::create('accountbanktypes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('account_number');
-            $table->foreignId('currency_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('bank_branche_id')->constrained()->cascadeOnDelete();
-            $table->decimmal('interest_rate', 5, 2);
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('account_name');
             $table->softDeletes();
             $table->timestamps();
         });

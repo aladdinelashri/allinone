@@ -30,7 +30,6 @@ return new class extends Migration
             $table->string('company_name')->nullable();
             $table->string('jop_name')->nullable();
             $table->string('website')->nullable();
-            $table->foreignId('currency_id')->nullable()->onDelete('cascade');
             $table->foreignId('company_id')->nullable()->onDelete('cascade');
             $table->foreignId('jop_id')->nullable()->onDelete('cascade');
             $table->timestamps();
