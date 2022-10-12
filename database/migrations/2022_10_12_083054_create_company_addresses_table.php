@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('company_addresses', function (Blueprint $table) {
             $table->id();
             $table->string('address_street_1')->nullable();
             $table->string('address_street_2')->nullable();
@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('zip')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('type')->nullable();
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('company_addresses');
     }
 };
