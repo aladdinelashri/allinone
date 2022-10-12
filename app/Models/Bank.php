@@ -9,8 +9,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bank extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use  SoftDeletes;
+
     protected $dates = ['deleted_at'];
+
+    protected $fillable = ['name','code','phonecode',];
+    protected $guarded = [
+        'id'
+    ];
 
     public function bankbranchs()
     {

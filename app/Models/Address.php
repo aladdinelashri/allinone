@@ -4,30 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['name','code','phonecode'];
-
-
-    $table->string('name')->nullable();
-    $table->string('address_street_1')->nullable();
-    $table->string('address_street_2')->nullable();
-    $table->string('city')->nullable();
-    $table->string('state')->nullable();
-    $table->foreignId('city_id')->constrained()->cascadeOnDelete();
-    $table->string('zip')->nullable();
-    $table->string('phone')->nullable();
-    $table->string('fax')->nullable();
-    $table->string('type')->nullable();
-    $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-
-
-
+    protected $fillable = ['name','address_street_1','address_street_2','city','state', 'zip','phone', 'fax', 'user_id',];
+    protected $guarded = [
+        'id'
+    ];
 
 
     public function cities()
